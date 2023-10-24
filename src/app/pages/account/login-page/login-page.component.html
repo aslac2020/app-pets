@@ -11,8 +11,10 @@
         <h3 class="uk-card-title">Autentique-se</h3>
         <div class="uk-margin">
           <input class="uk-input uk-form-large"
-          formControlName="username" type="text" placeholder="CPF"
-          [ngClass]="{'uk-form-danger': (!form.controls['username'].valid && !form.controls['username'].pristine)}"
+          formControlName="username" type="text"
+          placeholder="CPF"
+          mask="000.000.000-00"
+          [ngClass]="{'uk-form-danger': (form.get('username')?.errors?.['required'] && form.get('username')?.touched)}"
           >
         </div>
         <div class="uk-margin">
@@ -22,7 +24,7 @@
           >
         </div>
         <div class="uk-margin uk-text-right">
-          <button (click)="submit()"  class="uk-button uk-button-default" [disabled]="form.invalid">Entrar</button>
+          <button (click)="submit()"  class="uk-button uk-button-default">Entrar</button>
         </div>
       </div>
     </form>
