@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule } from '@angular/common/http'
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -16,6 +20,11 @@ import { ProductCardComponent } from './components/store/product-card/product-ca
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/shared/loading/loading.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { DataService } from './services/data.service';
+import { AuthService } from './services/auth.service';
+import { ProfilePageComponent } from './pages/account/profile-page/profile-page.component';
+
+
 
 @NgModule({
   declarations: [
@@ -30,6 +39,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     FramePageComponent,
     ProductCardComponent,
     LoadingComponent,
+    ProfilePageComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,9 +47,11 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     HttpClientModule,
     ReactiveFormsModule,
     NgxMaskDirective,
-    NgxMaskPipe
+    NgxMaskPipe,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
-  providers: [provideNgxMask()],
+  providers: [provideNgxMask(), DataService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

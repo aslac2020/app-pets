@@ -14,8 +14,8 @@
           formControlName="username" type="text"
           placeholder="CPF"
           mask="000.000.000-00"
-          [ngClass]="{'uk-form-danger': (form.get('username')?.errors?.['required'] && form.get('username')?.touched)}"
           >
+          <small class="text-danger" *ngIf="form.get('username')?.errors?.['required']&& form.get('username')?.touched" >Cpf Requerido</small>
         </div>
         <div class="uk-margin">
           <input class="uk-input uk-form-large" formControlName="password"
@@ -30,10 +30,10 @@
     </form>
 
     <p class="uk-text-center" *ngIf="!busy">
-      <a href="/signup" class="uk-button uk-width-1-1 uk-button-large uk-button-primary uk-margin-small-bottom">Quero me
+      <a [routerLink]="['/signup']" class="uk-button uk-width-1-1 uk-button-large uk-button-primary uk-margin-small-bottom">Quero me
         Cadastrar</a>
       <br>
-      <a href="/reset-password" class="uk-button uk-button-link">Esqueci minha senha</a>
+      <a [routerLink]="['/reset-password']" class="uk-button uk-button-link">Esqueci minha senha</a>
     </p>
 
   </div>
